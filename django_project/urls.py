@@ -18,5 +18,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("blog/", include("blog.urls")),
+    # Leave empty string to make it the HOME page
+    path("", include("blog.urls")),
 ]
