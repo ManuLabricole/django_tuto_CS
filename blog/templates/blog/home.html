@@ -13,7 +13,11 @@
     <link rel="stylesheet" href="" />
   </head>
   <body>
-    <h1>HOME PAGE</h1>
+    {% for post in posts %}
+    <h1>{{post.title}}</h1>
+    <p>By {{post.author}} on {{post.date_posted}}</p>
+    <p>By {{post.content}}</p>
+    {% endfor %}
     <script src="" async defer></script>
   </body>
 </html>
