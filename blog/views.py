@@ -28,4 +28,7 @@ def home(request):
 
 
 def about(request):
-    return render(request, "blog/about.html")
+    context = {
+        "title": "About"
+    }
+    return render(request, "blog/about.html", context)
