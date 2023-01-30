@@ -5,6 +5,10 @@ from django.contrib.auth.forms import UserCreationForm
 
 
 def register(request):
-    form = UserCreationForm()
 
-    return render(request, "users/register.html", {"form": form})
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valide():
+            username = form.cleaned_data.get("username")
+    else:
+        return render(request, "users/register.html", {"form": form})
