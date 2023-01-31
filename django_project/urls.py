@@ -23,6 +23,6 @@ urlpatterns = [
     # Leave empty string to make it the HOME page
     path("", include("blog.urls")),
     path("register/", user_views.register, name="register"),
-    path("login/", auth_views.LoginView.as_views(), name="login"),
-    path("logout/", auth_views.LogoutView.auth_views(), name="logout")
+    path("login/", auth_views.LoginView.as_view(), name="login"),
+    path("logout/", auth_views.LogoutView.as_view(), name="logout")
 ]
