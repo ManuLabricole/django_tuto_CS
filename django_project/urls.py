@@ -16,10 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from users import views as user_views
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     # Leave empty string to make it the HOME page
     path("", include("blog.urls")),
-    path("register/", user_views.register, name="register")
+    path("register/", user_views.register, name="register"),
+    path("login/", auth_views.LoginView.as_views(), name="login"),
+    path("logout/", auth_views.LogoutView.auth_views(), name="logout")
 ]
