@@ -8,4 +8,5 @@ class Profile(models.Model):
         default="default.jpg", upload_to="profile_pics")
 
     def __str__(self) -> str:
-        return f'{self.user.username} Profile'
+        # This string is render in the /admin part.
+        return f'{self.user.username} ProfileT'

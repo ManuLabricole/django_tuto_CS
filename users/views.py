@@ -31,6 +31,7 @@ def profile(request):
             u_form.save()
             p_form.save()
             messages.success(request, f'your account as been updatet')
+            # Important to redirect to advoid the double POST request strange behaviour
             return redirect('profile')
 
     else:
