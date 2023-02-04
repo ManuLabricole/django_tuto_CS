@@ -1,5 +1,9 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView
+from django.views.generic import (
+    ListView,
+    DetailView,
+    CreateView
+)
 from django.http import HttpResponse
 from .models import Post
 
@@ -12,13 +16,6 @@ def home(request):
     return render(request, "blog/home.html", context)
 
 
-def about(request):
-    context = {
-        "title": "About"
-    }
-    return render(request, "blog/about.html", context)
-
-
 class PostListView(ListView):
     model = Post
     template_name = "blog/home.html"
@@ -28,3 +25,15 @@ class PostListView(ListView):
 
 class PostDetailView(DetailView):
     model = Post
+
+
+class PostCreateView(CreateView):
+    model = Post
+    fields = ["title", "content"]
+
+
+def about(request):
+    context = {
+        "title": "About"
+    }
+    return render(request, "blog/about.html", context)
