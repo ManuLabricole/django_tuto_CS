@@ -40,7 +40,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
+class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
     fields = ["title", "content"]
 
@@ -49,7 +49,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
-    def test_func(self):
+    def test_func(self) -> bool:
         post = self.get_object()
         if self.request.user == post.author:
             return True
@@ -60,12 +60,12 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Post
 
-    def test_func(self):
+    def test_func(self) -> bool:
         post = self.get_object()
         if self.request.user == post.author:
-            True
+            return True
         else:
-            False
+            return False
 
 
 def about(request):
