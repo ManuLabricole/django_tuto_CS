@@ -1,8 +1,7 @@
 from django.shortcuts import render
+from django.views.generic import ListView
 from django.http import HttpResponse
 from .models import Post
-
-# Create your views here.
 
 
 def home(request):
@@ -18,3 +17,7 @@ def about(request):
         "title": "About"
     }
     return render(request, "blog/about.html", context)
+
+
+class PostListView(ListView):
+    model = Post
