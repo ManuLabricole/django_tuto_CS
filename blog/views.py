@@ -31,6 +31,11 @@ class PostCreateView(CreateView):
     model = Post
     fields = ["title", "content"]
 
+    # self is actually the Post model sent
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
 
 def about(request):
     context = {
