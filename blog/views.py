@@ -21,3 +21,4 @@ def about(request):
 
 class PostListView(ListView):
     model = Post
+    template_name = "blog/home.html"
