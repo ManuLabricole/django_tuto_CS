@@ -3,7 +3,8 @@ from .views import (
     PostListView, 
     PostDetailView, 
     PostCreateView, 
-    PostUpdateView
+    PostUpdateView,
+    PostDeleteView
     )
 from . import views
 
@@ -17,8 +18,9 @@ urlpatterns = [
     # CreateView expect a template called NameOfView_form 
     path("post/new/", PostCreateView.as_view(), name="post-create"),
     
-    # CreateView expect a template called NameOfView_detail 
-    path("post/<int:pk>/update/", PostUpdateView.as_view(), name="post-update"),
+
+    path("post/<int:pk>/update/", PostUpdateView.as_view(), name="post-update"),  
+    path("post/<int:pk>/delete/", PostDeleteView.as_view(), name="post-delete"),
     
 
     path("about/", views.about, name="blog-about"),

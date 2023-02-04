@@ -52,9 +52,9 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     def test_func(self):
         post = self.get_object()
         if self.request.user == post.author:
-            True
+            return True
         else:
-            False
+            return False
 
 
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
